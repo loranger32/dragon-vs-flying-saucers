@@ -85,6 +85,11 @@ class GameOver < Scene
     args.outputs.debug << {x: 40, y: 80, text: "Timer: #{args.state.timer}"}.merge(white)
 
     inc_timer!
+
+    # Show Credits just after end game music if player has not dismissed the game over scene yet
+    if args.state.victory && args.audio[:end_game].nil?
+      args.state.scene = CREDIT_SCENE.new(args)
+    end
   end
 
   def new_high_score?(args)
