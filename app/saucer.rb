@@ -1,6 +1,6 @@
 class Saucer < Sprite
   SIZE = 64
-  PATH = "sprites/flying-saucer-0.png"
+  PATH = "sprites/flying_saucer/flying-saucer-0.png"
   SPEED = 4
 
   attr_accessor :dead, :speed
@@ -60,7 +60,7 @@ class Saucer < Sprite
 
   def animate
     sprite_index = 0.frame_index(count: 6, hold_for: 4, repeat: true)
-    self.path = "sprites/flying-saucer-#{sprite_index}.png"
+    self.path = "sprites/flying_saucer/flying-saucer-#{sprite_index}.png"
   end
 
   def move

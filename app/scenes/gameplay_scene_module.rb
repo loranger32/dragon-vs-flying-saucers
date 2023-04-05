@@ -4,7 +4,6 @@ module GamePlayScene
 
   def tick
     # Main music
-    gain = $gtk.production? ? 0.6 : 2.0
     args.audio[:music] ||= { input: "sounds/flight.ogg", looping: true, gain: gain }
 
     # Sky
@@ -63,8 +62,7 @@ module GamePlayScene
     args.outputs.primitives << [args.state.clouds, args.state.saucers, args.state.explosions,
       args.state.player, args.state.fireballs, args.state.bullets]
 
-    args.outputs.debug << {x: 40, y: 80, text: "Timer: #{args.state.timer}"}.merge(white)
-    args.outputs.debug << {x: 40, y: 40, text: "FR: #{args.gtk.current_framerate}"}.merge(white)
+    debug_labels
   end
 
   def proceed_player_and_fireballs

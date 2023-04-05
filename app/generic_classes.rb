@@ -21,10 +21,11 @@ end
 class SceneNotImplError < StandardError; end
 
 class Scene
-  attr_reader :args
+  attr_reader :args, :gain
 
   def initialize(args)
     @args = args
+    @gain = $gtk.production? ? 1.0 : 0.2
   end
 
   def tick
@@ -47,5 +48,12 @@ class Scene
 
   def to_s
     serialize.to_s
+  end
+
+  def debug_labels
+    return if args.gtk.production?
+
+    args.outputs.debug << {x: 40, y: 80, text: "Timer: #{args.state.timer}"}.merge(white)
+    args.outputs.debug << {x: 40, y: 40, text: "FR: #{args.gtk.current_framerate}"}.merge(white)
   end
 end

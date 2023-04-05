@@ -69,5 +69,7 @@ class Title < Scene
       args.state.scene = CREDIT_SCENE.new(args)
       return
     end
+
+    debug_labels
   end
 end

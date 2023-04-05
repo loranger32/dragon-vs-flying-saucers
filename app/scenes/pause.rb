@@ -8,9 +8,15 @@ class Pause < Scene
   end
 
   def tick
-    args.audio[:music].paused = true
+    args.audio[:music]&.paused = true
+    args.audio[:boss_battle]&.paused = true
 
-    gameplay_sky
+    if final_boss?
+      args.outputs.solids << night_sky
+    else
+      gameplay_sky
+    end
+
     gameplay_labels
 
     args.outputs.labels << h_centered_label(text: "PAUSE", se: 40, y: 400, color: white)
@@ -18,14 +24,22 @@ class Pause < Scene
 
     if args.inputs.keyboard.key_down.space || args.inputs.controller_one.key_down.start
       args.state.scene = @current_scene_class.new(args)
-      args.audio[:music].paused = false
+      args.audio[:music]&.paused = false
+      args.audio[:boss_battle]&.paused = false
     end
 
-    args.outputs.primitives << [args.state.clouds, args.state.saucers, args.state.explosions, args.state.player, args.state.fireballs, args.state.bullets]
+    if final_boss?
+      args.outputs.primitives << [args.state.stars, args.state.explosions, args.state.player,
+        args.state.fireballs, args.state.bullets, args.state.final_boss]
+    else
+      args.outputs.primitives << [args.state.clouds, args.state.saucers,
+      args.state.explosions, args.state.player, args.state.fireballs, args.state.bullets]
+    end
 
     if args.inputs.keyboard.key_down.t || args.inputs.controller_one.key_down.b
       $gtk.reset
       args.audio[:music] = nil
+      args.audio[:boss_battle] = nil
       args.state.scene = TITLE_SCENE.new(args)
 
     end
@@ -33,6 +47,10 @@ class Pause < Scene
 
   # Needed in the GamePlayLabels
   def current_level
-    @current_scene_class::LEVEL_NUMBER
+    final_boss? ? "Final Boss" : @current_scene_class::LEVEL_NUMBER
+  end
+
+  def final_boss?
+    @current_scene_class == FINAL_BOSS_SCENE
   end
 end
