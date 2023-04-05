@@ -59,7 +59,7 @@ class Credits < Scene
     player.path = "sprites/dragon/dragon-0.png"
     sprites << player
     explosion = Explosion.new(x: 600, y: spacer.y, birth: args.state.tick_count)
-    explosion.path = "sprites/firebaal_explosion/explosion-3.png"
+    explosion.path = "sprites/fireball_explosion/explosion-3.png"
     sprites << explosion
     sprites << {x: 900, y: spacer.y, w: 50, h: 50, path: "sprites/star.png"}
 
@@ -99,7 +99,6 @@ class Credits < Scene
 
     labels << h_centered_label(text: "final boss music: Orbital Colossus by Matthew Pablo", se: 5, y: spacer - 75, color: white)
     labels << h_centered_label(text: "https://matthewpablo.com", se: 1, y: spacer - 40, color: white)
-    labels << h_centered_label(text: "", se: 1, y: spacer - 40, color: white)
 
     labels << h_centered_label(text: "credits music: the-field-of-dreams by pauliuw", se: 5, y: spacer - 75, color: white)
     labels << h_centered_label(text: "https://opengameart.org/content/the-field-of-dreams", se: 1, y: spacer - 40, color: white)
