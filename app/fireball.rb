@@ -27,6 +27,26 @@ class Fireball < Sprite
     end
   end
 
+  def self.move_final_boss(args)
+    args.state.fireballs.each do |fb|
+      fb.move
+
+      if fb.out?
+        fb.dead = true
+        next
+      end
+
+      if fb.intersect_rect?(args.state.final_boss)
+        args.outputs.sounds << BOOM
+        fb.dead = true
+        args.state.final_boss.hp -= 1
+        args.state.explosions << Explosion.new(x: fb.x, y: fb.y, birth: args.state.tick_count)
+      end
+    end
+
+    args.state.fireballs.reject!(&:dead)
+  end
+
   def initialize(player)
     @x = player.x + player.w - 12
     @y = player.y + 3

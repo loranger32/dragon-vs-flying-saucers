@@ -10,6 +10,7 @@ LEVEL_TWO_SCENE = LevelTwo
 LEVEL_THREE_SCENE = LevelThree
 LEVEL_FOUR_SCENE = LevelFour
 LEVEL_FIVE_SCENE = LevelFive
+FINAL_BOSS_SCENE = FinalLevel
 
 def tick(args)
   # Hack for broken ~ console key

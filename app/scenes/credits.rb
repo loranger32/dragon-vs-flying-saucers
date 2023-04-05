@@ -31,7 +31,7 @@ class Credits < Scene
       args.state.scene = TITLE_SCENE.new(args)
     end
 
-    args.outputs.debug << {x: 40, y: 600, text: "Current FR: #{args.gtk.current_framerate}"}.merge(WHITE)
+    debug_labels
   end
 
   def gen_credits_labels_and_sprites(args)
@@ -56,10 +56,10 @@ class Credits < Scene
     labels << h_centered_label(text: "SPRITES", se: 10, y: spacer - 120, color: white)
 
     player = Player.new(x: 300, y: spacer - 140, w: 100, h: 100)
-    player.path = "sprites/dragon-0.png"
+    player.path = "sprites/dragon/dragon-0.png"
     sprites << player
     explosion = Explosion.new(x: 600, y: spacer.y, birth: args.state.tick_count)
-    explosion.path = "sprites/explosion-3.png"
+    explosion.path = "sprites/firebaal_explosion/explosion-3.png"
     sprites << explosion
     sprites << {x: 900, y: spacer.y, w: 50, h: 50, path: "sprites/star.png"}
 
@@ -73,19 +73,34 @@ class Credits < Scene
     labels << h_centered_label(text: "cloud: Ian Peter", se: 5, y: spacer - 20, color: white)
     labels << h_centered_label(text: "https://opengameart.org/users/ian-peter", se: 1, y: spacer - 40, color: white)
 
-    sprites << {x: 600, y: spacer - 180, w: 100, h: 100, path: "sprites/flying-saucer-0.png"}
+    sprites << {x: 600, y: spacer - 180, w: 100, h: 100, path: "sprites/flying_saucer/flying-saucer-0.png"}
     labels << h_centered_label(text: "flying saucers: Gamedevtuts+", se: 5, y: spacer - 20, color: white)
     labels << h_centered_label(text: "http://gamedev.tutsplus.com/articles/news/enjoy-these-totally-free-space-based-shoot-em-up-sprites", se: 1, y: spacer - 40, color: white)
 
-    sprites << {x: 600, y: spacer - 180, w: 100, h: 100, path: "sprites/dragon-explosion-4.png"}
+    sprites << {x: 600, y: spacer - 180, w: 100, h: 100, path: "sprites/alienshiptex.png"}
+    labels << h_centered_label(text: "Final Boss: MillionthVector", se: 5, y: spacer - 20, color: white)
+    labels << h_centered_label(text: "http://millionthvector.blogspot.de", se: 1, y: spacer - 40, color: white)
+    labels << h_centered_label(text: "Creative Commons BY License: https://creativecommons.org/licenses/by/4.0/", se: 1, y: spacer - 40, color: white)
+
+    sprites << {x: 600, y: spacer - 180, w: 100, h: 100, path: "sprites/dragon_explosion/dragon-explosion-4.png"}
     labels << h_centered_label(text: "player explosion: jrob774", se: 5, y: spacer - 20, color: white)
     labels << h_centered_label(text: "https://opengameart.org/users/jrob774", se: 1, y: spacer - 40, color: white)
+
+    sprites << {x: 600, y: spacer - 180, w: 100, h: 100, path: "sprites/big_explosion/big_explosion-1.png"}
+    labels << h_centered_label(text: "final boss explosion: Cuzco", se: 5, y: spacer - 20, color: white)
+    labels << h_centered_label(text: "https://opengameart.org/content/explosion", se: 1, y: spacer - 40, color: white)
 
     labels << h_centered_label(text: "SOUNDS AND MUSICS", se: 10, y: spacer - 120, color: white)
     labels << h_centered_label(text: "in-game music, fireball shoot and flying saucer explosion: Brett Chalupa", se: 5, y: spacer - 100, color: white)
     labels << h_centered_label(text: "https://book.dragonriders.community/08-sound.html", se: 1, y: spacer - 40, color: white)
+
     labels << h_centered_label(text: "game-over sound: Sauer", se: 5, y: spacer - 75, color: white)
     labels << h_centered_label(text: "https://opengameart.org/content/oldschool-win-and-die-jump-and-run-sounds", se: 1, y: spacer - 40, color: white)
+
+    labels << h_centered_label(text: "final boss music: Orbital Colossus by Matthew Pablo", se: 5, y: spacer - 75, color: white)
+    labels << h_centered_label(text: "https://matthewpablo.com", se: 1, y: spacer - 40, color: white)
+    labels << h_centered_label(text: "", se: 1, y: spacer - 40, color: white)
+
     labels << h_centered_label(text: "credits music: the-field-of-dreams by pauliuw", se: 5, y: spacer - 75, color: white)
     labels << h_centered_label(text: "https://opengameart.org/content/the-field-of-dreams", se: 1, y: spacer - 40, color: white)
 

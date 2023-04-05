@@ -15,16 +15,12 @@ class LevelFive < Scene
 
     if counter_end_level?
       return while args.state.saucers.size > 0 || args.state.bullets.size > 0
-      args.state.victory ||= true
-      args.state.timer_at_victory ||= args.state.timer
-      args.audio[:music] = nil
-      args.audio[:end_game] ||= {input: "sounds/end_game.ogg", loop: false}
-      if args.state.timer - args.state.timer_at_victory < 20
-        display_victory
-        inc_timer!
-      else
-        args.state.scene = GAME_OVER_SCENE.new(args)
-      end
+
+      args.state.saucers = nil
+      args.state.timer_at_start_level = nil
+      args.outputs.sounds << "sounds/round_end.wav"
+      args.state.bullets = []
+      args.state.scene = FINAL_BOSS_SCENE.new(args)
     else
       replace_killed_saucers
     end

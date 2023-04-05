@@ -19,18 +19,18 @@ class Player < Sprite
 
   def animate_explosion(args)
     sprite_index = death_tick.frame_index(count: 5, hold_for: 8, repeat: false)
-    self.path = "sprites/dragon-explosion-#{sprite_index}.png"
+    self.path = "sprites/dragon_explosion/dragon-explosion-#{sprite_index}.png"
 
     if sprite_index.nil?
       args.state.timer = 0
       args.state.player_explosion_finished = true
-      self.path = "sprites/dragon-explosion-11.png"
+      self.path = "sprites/dragon_explosion/dragon-explosion-11.png"
     end
   end
 
   def animate_sprite(args)
     sprite_index = 0.frame_index(count: 6, hold_for: animation_speed(args), repeat: true)
-    self.path = "sprites/dragon-#{sprite_index}.png"
+    self.path = "sprites/dragon/dragon-#{sprite_index}.png"
   end
 
   def animation_speed(args)
@@ -51,7 +51,7 @@ class Player < Sprite
   end
 
   def hit_by_bullet?(args)
-    args.state.bullets.any? { |bullet| bullet.intersect_rect?(self, 3.0) }
+    args.state.bullets&.any? { |bullet| bullet.intersect_rect?(self, 5.0) }
   end
 
   def move(args)
@@ -89,11 +89,5 @@ class Player < Sprite
     else
       ORT_SPEED
     end
-  end
-
-  def sprite_file(int, args)
-    raise ArgumentError, "Invalid argument for player sprite, 0..5 but got #{int}" if int < 0 || int > 5
-      
-    args.state.player.path = "sprites/dragon-#{int}.png"
   end
 end
