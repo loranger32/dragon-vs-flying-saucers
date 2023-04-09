@@ -51,6 +51,7 @@ module GamePlayScene
     args.state.fireballs.reject!(&:dead)
 
     Explosion.animate(args)
+    args.state.explosions.reject!(&:dead)
 
     inc_timer!
 

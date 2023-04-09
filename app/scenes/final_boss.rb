@@ -35,6 +35,7 @@ class FinalLevel < Scene
     Bullet.move(args.state.bullets)
     Fireball.move_final_boss(args)
     Explosion.animate(args)
+    args.state.explosions.reject!(&:dead)
 
     if args.state.player.alive
       args.state.player.animate_sprite(args)

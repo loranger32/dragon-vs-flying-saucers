@@ -21,10 +21,9 @@ class Explosion < Sprite
     sprite_index = birth.frame_index(count: DURATION, hold_for: 2, repeat: repeat)
     if sprite_index.nil?
       self.dead = true
-      self.path = "sprites/fireball_explosion/explosion-6.png"
-      args.state.explosions.reject!(&:dead)
       return
     end
+
     self.path = "sprites/fireball_explosion/explosion-#{sprite_index}.png"
   end
 
