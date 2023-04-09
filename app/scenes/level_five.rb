@@ -16,11 +16,14 @@ class LevelFive < Scene
     if counter_end_level?
       return while args.state.saucers.size > 0 || args.state.bullets.size > 0
 
+      args.outputs.sounds << "sounds/round_end.wav"
       args.state.saucers = nil
       args.state.timer_at_start_level = nil
-      args.outputs.sounds << "sounds/round_end.wav"
       args.state.bullets = []
-      args.state.scene = FINAL_BOSS_SCENE.new(args)
+      args.state.fireballs = []
+
+      args.state.scene = END_GAME_TRANSITION_SCENE.new(args)
+
     else
       replace_killed_saucers
     end
@@ -38,9 +41,5 @@ class LevelFive < Scene
       Saucer.shoot(args, BULLET_SPEED)
     end
     Bullet.move(args.state.bullets)
-  end
-
-  def display_victory
-    args.outputs.primitives << h_centered_label(text: "VICTORY !!!", se: 30, y: 400, color: WHITE).label!
   end
 end

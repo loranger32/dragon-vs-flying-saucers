@@ -7,7 +7,7 @@ class Player < Sprite
   MOVEMENT_ANIMATION_RATE = 4
   EXPLOSION_W = 96
 
-  attr_accessor :alive, :death_tick
+  attr_accessor :alive, :death_tick, :vect
 
   def initialize(x:, y:, w: WIDTH, h: HEIGHT)
     @x = x
@@ -77,6 +77,20 @@ class Player < Sprite
       args.audio[:music].paused = true
       args.outputs.sounds << "sounds/death.wav"
     end
+  end
+
+  def auto_pilot(args)
+    raise "No vector set to auto_pilot player" unless vect
+    self.x -= vect.x
+    self.y -= vect.y
+  end
+
+  def at_center?(args)
+    first = (x - args.grid.w / 2).abs.to_i
+    second = (y - args.grid.h / 2).abs.to_i
+
+    dist = first**2 + second**2
+    dist <= 6000
   end
 
   def serialize
