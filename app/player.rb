@@ -7,7 +7,7 @@ class Player < Sprite
   MOVEMENT_ANIMATION_RATE = 4
   EXPLOSION_W = 96
 
-  attr_accessor :alive, :death_tick
+  attr_accessor :alive, :death_tick, :vect
 
   def initialize(x:, y:, w: WIDTH, h: HEIGHT)
     @x = x
@@ -72,11 +72,28 @@ class Player < Sprite
     check_boundaries(args.grid)
 
     if hit_by_saucer?(args) || hit_by_bullet?(args)
+      args.state.remaining_attempts -= 1
       self.alive = false
       self.death_tick = args.state.tick_count
-      args.audio[:music].paused = true
+      # the conditional here is to fix a weird bug in final boss scene after two deaths
+      # At that point, args.audio[:music] seems to be the FinalBoss instance. No idea why
+      args.audio[:music].paused = true if args.audio[:music].respond_to?(:paused=)
       args.outputs.sounds << "sounds/death.wav"
     end
+  end
+
+  def auto_pilot(args)
+    raise "No vector set to auto_pilot player" unless vect
+    self.x -= vect.x
+    self.y -= vect.y
+  end
+
+  def at_center?(args)
+    first = (x - args.grid.w / 2).abs.to_i
+    second = (y - args.grid.h / 2).abs.to_i
+
+    dist = first**2 + second**2
+    dist <= 6000
   end
 
   def serialize

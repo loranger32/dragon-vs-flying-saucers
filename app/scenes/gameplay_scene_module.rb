@@ -13,6 +13,9 @@ module GamePlayScene
     args.state.timer ||= 0
     args.state.timer_at_start_level ||= args.state.timer
 
+    # Remainning attempts
+    args.state.remaining_attempts ||= 3
+
     # Pause
     args.state.game_paused ||= false
 
@@ -51,10 +54,11 @@ module GamePlayScene
     args.state.fireballs.reject!(&:dead)
 
     Explosion.animate(args)
+    args.state.explosions.reject!(&:dead)
 
     inc_timer!
 
-    proceed_player_and_fireballs
+    return :player_dead if proceed_player_and_fireballs == :player_dead
 
     ## Labels
     gameplay_labels
@@ -73,8 +77,14 @@ module GamePlayScene
     else
       args.state.player.animate_explosion(args)
       if args.state.player_explosion_finished
-        args.audio[:music] = nil
-        args.state.scene = GAME_OVER_SCENE.new(args)
+        if args.state.remaining_attempts > 0
+          args.state.scene = self.class.new(args)
+          reset_state_for_new_level
+          return :player_dead
+        else
+          args.audio[:music] = nil
+          args.state.scene = GAME_OVER_SCENE.new(args)
+        end
       end
     end
   end
@@ -95,5 +105,14 @@ module GamePlayScene
 
   def first_3_seconds?
     args.state.timer < args.state.timer_at_start_level + 3
+  end
+
+  def reset_state_for_new_level
+    args.state.player = nil
+    args.state.clouds = nil
+    args.state.fireballs = nil
+    args.state.bullets = nil
+    args.state.saucers = nil
+    args.state.timer_at_start_level = args.state.timer
   end
 end

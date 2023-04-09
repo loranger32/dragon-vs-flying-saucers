@@ -9,7 +9,7 @@ class LevelFour < Scene
 
   def tick
     args.state.bullets_aimed ||= true
-    super
+    return if super == :player_dead
     
     proceed_bullets
 

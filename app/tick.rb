@@ -11,6 +11,8 @@ LEVEL_THREE_SCENE = LevelThree
 LEVEL_FOUR_SCENE = LevelFour
 LEVEL_FIVE_SCENE = LevelFive
 FINAL_BOSS_SCENE = FinalLevel
+END_GAME_TRANSITION_SCENE = EndGameTransition
+LOGO_SCENE = Logo
 
 def tick(args)
   # Hack for broken ~ console key
@@ -18,7 +20,7 @@ def tick(args)
     args.gtk.console.show
   end
 
-  args.state.scene ||= TITLE_SCENE.new(args)
+  args.state.scene ||= LOGO_SCENE.new(args)
   args.state.scene.tick
 end
 

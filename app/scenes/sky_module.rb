@@ -3,6 +3,10 @@ module Sky
     args.outputs.background_color = [92, 120, 230]
   end
 
+  def transition_sky
+    args.outputs.background_color = [0, 0, 255]
+  end
+
   def night_sky
     [[0,   0, args.grid.w, 95,  0, 0, 250],
      [0,  95, args.grid.w, 10,  0, 0, 240],
