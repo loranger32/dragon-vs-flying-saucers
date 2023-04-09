@@ -2,8 +2,10 @@ class FinalLevel < Scene
   include Sky
   include GamePlayLabels
 
+  PLAYER_X_AT_START = 200
+  PLAYER_Y_AT_START = 350
+
   def tick
-    args.state.final_boss_start_tick ||= args.state.tick_count
     args.state.timer_at_start_level ||= args.state.timer
 
     args.audio[:music] = nil
@@ -15,8 +17,8 @@ class FinalLevel < Scene
     args.state.final_boss ||= FinalBoss.new(x: 900, y: 300)
 
     if first_3_seconds?
-      args.state.player.x = 200
-      args.state.player.y = 350
+      args.state.player.x = PLAYER_X_AT_START
+      args.state.player.y = PLAYER_Y_AT_START
     end
 
     if args.inputs.keyboard.key_down.space || args.inputs.controller_one.key_down.start
@@ -33,6 +35,7 @@ class FinalLevel < Scene
     Star.animate(args.state.stars)
 
     Bullet.move(args.state.bullets)
+
     Fireball.move_final_boss(args)
     Explosion.animate(args)
     args.state.explosions.reject!(&:dead)
@@ -47,8 +50,13 @@ class FinalLevel < Scene
     else
       args.state.player.animate_explosion(args)
       if args.state.player_explosion_finished
-        args.audio[:boss_battle] = nil
-        args.state.scene = GAME_OVER_SCENE.new(args)
+        if args.state.remaining_attempts >= 0
+          reset_state_for_new_attempt
+          return
+        else
+          args.audio[:boss_battle] = nil
+          args.state.scene = GAME_OVER_SCENE.new(args)
+        end
       end
     end
 
@@ -82,10 +90,6 @@ class FinalLevel < Scene
     inc_timer!
   end
 
-  def first_tick?
-    args.state.final_boss_start_tick == args.state.tick_count
-  end
-
   def display_victory
     args.outputs.primitives << h_centered_label(text: "VICTORY !!!", se: 30, y: 400, color: WHITE).label!
   end
@@ -112,5 +116,19 @@ class FinalLevel < Scene
 
   def boss_dead?
     args.state.final_boss.hp <= 0
+  end
+
+  def player_has_been_hit?
+    args.state.player.hit_by_bullet?(args)
+  end
+
+  def reset_state_for_new_attempt
+    args.state.final_boss = nil
+    args.state.bullets = []
+    args.state.fireballs = []
+    args.state.timer_at_start_level = args.state.timer
+    args.state.player.alive = true
+    # Seems to be fixed
+    #args.state.saucers = [] # Don't know why it is need here - saucers is nil anyway when this scene begins for the first time
   end
 end

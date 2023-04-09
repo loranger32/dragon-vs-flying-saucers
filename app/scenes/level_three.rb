@@ -8,7 +8,7 @@ class LevelThree < Scene
   MAX_SAUCER_COUNT = 6
 
   def tick
-    super
+    return if super == :player_dead
 
     proceed_bullets
 

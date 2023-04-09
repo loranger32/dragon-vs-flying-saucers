@@ -72,9 +72,12 @@ class Player < Sprite
     check_boundaries(args.grid)
 
     if hit_by_saucer?(args) || hit_by_bullet?(args)
+      args.state.remaining_attempts -= 1
       self.alive = false
       self.death_tick = args.state.tick_count
-      args.audio[:music].paused = true
+      # the conditional here is to fix a weird bug in final boss scene after two deaths
+      # At that point, args.audio[:music] seems to be the FinalBoss instance. No idea why
+      args.audio[:music].paused = true if args.audio[:music].respond_to?(:paused=)
       args.outputs.sounds << "sounds/death.wav"
     end
   end
