@@ -50,7 +50,7 @@ class FinalLevel < Scene
     else
       args.state.player.animate_explosion(args)
       if args.state.player_explosion_finished
-        if args.state.remaining_attempts >= 0
+        if args.state.remaining_attempts > 0
           reset_state_for_new_attempt
           return
         else

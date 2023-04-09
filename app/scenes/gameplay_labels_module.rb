@@ -1,6 +1,10 @@
 module GamePlayLabels
   def gameplay_labels
-    # Score
+    #########
+    # SCORE #
+    #########
+
+    # Score Text
     score_txt = "Score: #{args.state.score}"
     args.outputs.primitives << {
       x: 40,
@@ -34,7 +38,47 @@ module GamePlayLabels
       b: 250
     }
 
-    # Level
+
+    ###################
+    # Lives Remaining #
+    ###################
+
+    # Lives Remaining Text
+    lr_text = "Lives: #{args.state.remaining_attempts}"
+    args.outputs.primitives << h_centered_label(text: lr_text, y: args.grid.h - 40, se: 4, color: WHITE).label!
+
+    # Border around Lives Remaining Solid
+    lr_w, lr_h = args.gtk.calcstringbox(lr_text, 4)
+    lr_x = (args.grid.w / 2) - (lr_w / 2) - 15
+    lr_y = args.grid.h - 45 - lr_h
+
+    lr_w += 30
+    lr_h += 15
+
+    args.outputs.solids << {
+      x: lr_x - 3,
+      y: lr_y - 3,
+      w: lr_w + 6,
+      h: lr_h + 6,
+    }.merge(YELLOW)
+
+    # Solid around Lives Remaining
+    args.outputs.solids << {
+      x: lr_x,
+      y: lr_y,
+      w: lr_w,
+      h: lr_h,
+      r: 50,
+      g: 50,
+      b: 250
+    }
+
+
+    #########
+    # LEVEL #
+    #########
+
+    # Level Text
     level_txt = if args.state.scene.class == FINAL_BOSS_SCENE
        "Final Boss"
     else
