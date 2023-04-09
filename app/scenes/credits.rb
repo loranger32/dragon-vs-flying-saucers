@@ -59,7 +59,7 @@ class Credits < Scene
     player.path = "sprites/dragon/dragon-0.png"
     sprites << player
     explosion = Explosion.new(x: 600, y: spacer.y, birth: args.state.tick_count)
-    explosion.path = "sprites/firebaal_explosion/explosion-3.png"
+    explosion.path = "sprites/fireball_explosion/explosion-3.png"
     sprites << explosion
     sprites << {x: 900, y: spacer.y, w: 50, h: 50, path: "sprites/star.png"}
 

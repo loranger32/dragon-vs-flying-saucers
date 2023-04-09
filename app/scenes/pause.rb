@@ -41,7 +41,6 @@ class Pause < Scene
       args.audio[:music] = nil
       args.audio[:boss_battle] = nil
       args.state.scene = TITLE_SCENE.new(args)
-
     end
   end
 
