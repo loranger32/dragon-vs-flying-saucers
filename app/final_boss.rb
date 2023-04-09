@@ -61,7 +61,7 @@ class FinalBoss < Sprite
 
     if y > 520
       @up = false
-    elsif y < 150
+    elsif y < 50
       @up = true
     end
   end
