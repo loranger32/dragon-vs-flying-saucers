@@ -16,6 +16,15 @@ class Sprite
   def to_s
     serialize.to_s
   end
+
+  def fade(rate)
+    raise "No opacity set for #{self.class}" unless @a
+    @a -= rate
+  end
+
+  def restore_opacity
+    @a = 255
+  end
 end
 
 class SceneNotImplError < StandardError; end
