@@ -24,7 +24,7 @@ module GamePlayScene
     args.state.saucers     ||= Saucer.init_saucers(args, self.class::SAUCERS_AT_START)
 
     # clouds
-    args.state.clouds      ||= Cloud.init_clouds(args, 20)
+    args.state.clouds      ||= Cloud.init_clouds(args, 10)
 
     # Player
     args.state.player      ||= Player.new(x: 120, y: 280)
