@@ -4,11 +4,11 @@ class Star < Sprite
   SIZE = 25
   PATH = "sprites/star.png"
 
-  def self.populate_sky(args, qty)
+  def self.populate_sky(args, qty, min_height=0)
     sky = []
     qty.times do |i|
       x = rand(1300)
-      y = rand(700)
+      y = rand(700 - min_height) + min_height
       a = (i * 2 + 35) % 255
       sky << new(x, y, a)
     end

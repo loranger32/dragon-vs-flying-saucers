@@ -11,8 +11,8 @@ LEVEL_THREE_SCENE = LevelThree
 LEVEL_FOUR_SCENE = LevelFour
 LEVEL_FIVE_SCENE = LevelFive
 FINAL_BOSS_SCENE = FinalLevel
-END_GAME_TRANSITION_SCENE = EndGameTransition
 LEVEL_TRANSITION_SCENE = LevelTransition
+FINAL_BOSS_TRANSITION_SCENE = FinalBossTransition
 LOGO_SCENE = Logo
 
 def tick(args)
