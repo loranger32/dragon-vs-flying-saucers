@@ -1,4 +1,5 @@
 require "app/generic_classes.rb"
+require "app/background.rb"
 require "app/player.rb"
 require "app/cloud.rb"
 require "app/explosion.rb"
