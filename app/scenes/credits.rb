@@ -24,7 +24,7 @@ class Credits < Scene
     #   move_credits(-10)
     # end
 
-    move_credits(0.5)
+    move_credits(0.8)
 
     if args.inputs.keyboard.key_down.t || args.inputs.controller_one.key_down.y ||args.state.credits_labels.last.y > 800
       reset_state!
@@ -39,6 +39,9 @@ class Credits < Scene
     sprites = []
     spacer = VSpacer.new(args.grid.h)
 
+
+    ############################## BEGIN ######################################
+
     labels << h_centered_label(text: "Dragon", se: 20, y: spacer - 200, color: white)
     labels << h_centered_label(text: "vs", se: 20, y: spacer - 100, color: white)
     labels << h_centered_label(text: "Flying Saucers", se: 20, y: spacer - 100, color: white)
@@ -52,6 +55,9 @@ class Credits < Scene
     labels << h_centered_label(text: "Based on the 'Traget Practice' DragonRuby tutorial from Brett Chalupa", se: 1, y: spacer - 50, color: white)
     labels << h_centered_label(text: "https://book.dragonriders.community", se: 1, y: spacer - 40, color: white)
     labels << h_centered_label(text: "(thank you very much for this !)", se: 1, y: spacer - 40, color: white)
+
+
+    ############################## SPRITES ####################################
 
     labels << h_centered_label(text: "SPRITES", se: 10, y: spacer - 120, color: white)
 
@@ -89,6 +95,15 @@ class Credits < Scene
     sprites << {x: 600, y: spacer - 180, w: 100, h: 100, path: "sprites/big_explosion/big_explosion-1.png"}
     labels << h_centered_label(text: "final boss explosion: Cuzco", se: 5, y: spacer - 20, color: white)
     labels << h_centered_label(text: "https://opengameart.org/content/explosion", se: 1, y: spacer - 40, color: white)
+
+    sprites << {x: 120, y: spacer - 240, w: 240, h: 144, path: "sprites/backgrounds/background0.png"}
+    sprites << {x: 480, y: spacer.y, w: 240, h: 144, path: "sprites/backgrounds/snow.png"}
+    sprites << {x: 840, y: spacer.y, w: 240, h: 144, path: "sprites/backgrounds/rock.png"}
+    labels << h_centered_label(text: "backgrounds: greggman", se: 5, y: spacer - 20, color: WHITE)
+    labels << h_centered_label(text: "https://opengameart.org/content/backgrounds-for-2d-platformers", se: 1, y: spacer - 40, color: WHITE)
+
+
+    ############################## SOUND AND MUSIC ############################
 
     labels << h_centered_label(text: "SOUNDS AND MUSICS", se: 10, y: spacer - 120, color: white)
     labels << h_centered_label(text: "in-game music, fireball shoot and flying saucer explosion: Brett Chalupa", se: 5, y: spacer - 100, color: white)
