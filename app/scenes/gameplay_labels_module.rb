@@ -6,12 +6,8 @@ module GamePlayLabels
 
     # Score Text
     score_txt = "Score: #{args.state.score}"
-    args.outputs.primitives << {
-      x: 40,
-      y: args.grid.h - 40,
-      text: score_txt,
-      size_enum: 4
-  }.merge(WHITE).label!
+
+    score = {x: 40, y: args.grid.h - 40, text: score_txt, size_enum: 4}.merge(WHITE).label!
 
     score_w, score_h = args.gtk.calcstringbox(score_txt, 4)
     bg_score_x = 30
@@ -20,24 +16,12 @@ module GamePlayLabels
     score_h += 15
 
     # Border around score solid
-    args.outputs.solids << {
-      x: bg_score_x - 3,
-      y: bg_score_y - 3,
-      w: score_w + 6,
-      h: score_h + 6
-    }.merge(YELLOW)
+    border_around_score = {x: bg_score_x - 3, y: bg_score_y - 3, w: score_w + 6, h: score_h + 6}.merge(YELLOW).solid!
 
     # Solid around score
-    args.outputs.solids << {
-      x: bg_score_x,
-      y: bg_score_y,
-      w: score_w,
-      h: score_h,
-      r: 50,
-      g: 50,
-      b: 250
-    }
+    solid_around_score = {x: bg_score_x, y: bg_score_y, w: score_w, h: score_h, r: 50, g: 50, b: 250}.solid!
 
+    args.outputs.primitives << [border_around_score, solid_around_score, score]
 
     ###################
     # Lives Remaining #
@@ -45,7 +29,7 @@ module GamePlayLabels
 
     # Lives Remaining Text
     lr_text = "Lives: #{args.state.remaining_attempts}"
-    args.outputs.primitives << h_centered_label(text: lr_text, y: args.grid.h - 40, se: 4, color: WHITE).label!
+    lives_remaining = h_centered_label(text: lr_text, y: args.grid.h - 40, se: 4, color: WHITE).label!
 
     # Border around Lives Remaining Solid
     lr_w, lr_h = args.gtk.calcstringbox(lr_text, 4)
@@ -55,24 +39,12 @@ module GamePlayLabels
     lr_w += 30
     lr_h += 15
 
-    args.outputs.solids << {
-      x: lr_x - 3,
-      y: lr_y - 3,
-      w: lr_w + 6,
-      h: lr_h + 6,
-    }.merge(YELLOW)
+    border_around_lives_remaining = {x: lr_x - 3, y: lr_y - 3, w: lr_w + 6, h: lr_h + 6}.merge(YELLOW).solid!
 
     # Solid around Lives Remaining
-    args.outputs.solids << {
-      x: lr_x,
-      y: lr_y,
-      w: lr_w,
-      h: lr_h,
-      r: 50,
-      g: 50,
-      b: 250
-    }
+    solid_around_lives_remaining = {x: lr_x, y: lr_y, w: lr_w, h: lr_h, r: 50, g: 50, b: 250}.solid!
 
+    args.outputs.primitives << [border_around_lives_remaining, solid_around_lives_remaining, lives_remaining]
 
     #########
     # LEVEL #
@@ -84,13 +56,8 @@ module GamePlayLabels
     else
       "Level #{current_level}"
     end
-    args.outputs.primitives << {
-      x: args.grid.w - 40,
-      y: args.grid.h - 40,
-      text: level_txt,
-      size_enum: 4,
-      alignment_enum: 2
-    }.merge(WHITE).label!
+
+    level = {x: args.grid.w - 40, y: args.grid.h - 40, text: level_txt, size_enum: 4, alignment_enum: 2}.merge(WHITE).label!
 
     level_w, level_h = args.gtk.calcstringbox(level_txt, 4)
     bg_level_x = args.grid.w - level_w - 50
@@ -99,22 +66,11 @@ module GamePlayLabels
     level_h += 15
 
     # Border around Level solid
-    args.outputs.solids << {
-      x: bg_level_x - 3,
-      y: bg_level_y - 3,
-      w: level_w + 6,
-      h: level_h + 6,
-    }.merge(YELLOW)
+    border_around_level = {x: bg_level_x - 3, y: bg_level_y - 3, w: level_w + 6, h: level_h + 6}.merge(YELLOW).solid!
 
     # Solid around Level
-    args.outputs.solids << {
-      x: bg_level_x,
-      y: bg_level_y,
-      w: level_w,
-      h: level_h,
-      r: 50,
-      g: 50,
-      b: 250,
-    }
+    solid_around_level = {x: bg_level_x, y: bg_level_y, w: level_w, h: level_h, r: 50, g: 50, b: 250}.solid!
+
+    args.outputs.primitives << [border_around_level, solid_around_level, level]
   end
 end
