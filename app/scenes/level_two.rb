@@ -4,6 +4,7 @@ class LevelTwo < Scene
   LEVEL_NUMBER = 2
   SAUCERS_AT_START = 10
   MAX_SAUCER_COUNT = 20
+  BG_PATH = "sprites/backgrounds/background0.png"
 
   def tick
     super

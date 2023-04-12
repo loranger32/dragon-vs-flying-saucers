@@ -6,6 +6,7 @@ class LevelThree < Scene
   BULLET_TICK_INTERVAL = 180
   SAUCERS_AT_START = 5
   MAX_SAUCER_COUNT = 6
+  BG_PATH = "sprites/backgrounds/snow.png"
 
   def tick
     return if super == :player_dead

@@ -6,6 +6,7 @@ class LevelFive < Scene
   BULLET_TICK_INTERVAL = 90
   SAUCERS_AT_START = 5
   MAX_SAUCER_COUNT = 8
+  BG_PATH = "sprites/backgrounds/rock.png"
 
   def tick
     args.state.bullets_aimed ||= true

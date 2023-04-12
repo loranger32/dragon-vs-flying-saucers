@@ -7,7 +7,8 @@ module GamePlayScene
     args.audio[:music] ||= { input: "sounds/flight.ogg", looping: true, gain: gain }
 
     # Sky
-    gameplay_sky
+    # gameplay_sky
+    args.outputs.primitives << bg_sprite
 
     # Timer
     args.state.timer ||= 0
@@ -41,7 +42,7 @@ module GamePlayScene
     args.state.score       ||= 0
 
     if args.inputs.keyboard.key_down.space || args.inputs.controller_one.key_down.start
-      args.state.scene = PAUSE_SCENE.new(args, self.class)
+      args.state.scene = PAUSE_SCENE.new(args, self.class, bg_sprite)
     end
 
     Saucer.animate(args.state.saucers)
@@ -87,6 +88,10 @@ module GamePlayScene
         end
       end
     end
+  end
+
+  def bg_sprite
+    @bg_sprite ||= Background.new(self.class::BG_PATH)
   end
 
   def counter_end_level?

@@ -3,6 +3,7 @@ class LevelOne < Scene
 
   LEVEL_NUMBER = 1
   SAUCERS_AT_START = 4
+  BG_PATH = "sprites/backgrounds/background0.png"
 
   def tick
     super
