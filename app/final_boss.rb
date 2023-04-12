@@ -37,10 +37,14 @@ class FinalBoss < Sprite
       args.state.bullets << Bullet.new(x, y + h, 10)
 
       # Diagonal bullets
+      args.state.bullets << Bullet.new(x, y, 10, 40.to_vector(10))
       args.state.bullets << Bullet.new(x, y, 10, 30.to_vector(10))
       args.state.bullets << Bullet.new(x, y + h / 2, 10, 20.to_vector(10))
+      args.state.bullets << Bullet.new(x, y + h / 2, 10, 10.to_vector(10))
+      args.state.bullets << Bullet.new(x, y + h / 2, 10, -10.to_vector(10))
       args.state.bullets << Bullet.new(x, y + h / 2, 10, -20.to_vector(10))
       args.state.bullets << Bullet.new(x, y + h, 10, -30.to_vector(10))
+      args.state.bullets << Bullet.new(x, y + h, 10, -40.to_vector(10))
     end
   end
 
