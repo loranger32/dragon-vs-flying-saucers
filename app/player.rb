@@ -14,6 +14,7 @@ class Player < Sprite
     @y = y
     @w = w
     @h = h
+    @a = 255
     @alive = true
   end
 

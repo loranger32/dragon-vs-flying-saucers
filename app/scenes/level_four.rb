@@ -16,10 +16,9 @@ class LevelFour < Scene
 
     if counter_end_level?
       return while args.state.saucers.size > 0 || args.state.bullets.size > 0
-      args.state.saucers = nil
       args.state.timer_at_start_level = nil
       args.outputs.sounds << "sounds/round_end.wav"
-      args.state.scene = LEVEL_FIVE_SCENE.new(args)
+      args.state.scene = LEVEL_TRANSITION_SCENE.new(args, bg_sprite, LEVEL_FIVE_SCENE)
     else
       replace_killed_saucers
     end

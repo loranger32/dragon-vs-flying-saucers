@@ -61,6 +61,7 @@ class Cloud < Sprite
     @y    = y
     @w    = w
     @h    = h
+    @a    = 255
     @path = PATH
     @dead = false
     @speed = BASE_SPEED * [1,2].sample
