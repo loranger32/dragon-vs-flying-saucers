@@ -24,7 +24,7 @@ class Credits < Scene
     #   move_credits(-10)
     # end
 
-    move_credits(0.5)
+    move_credits(0.8)
 
     if args.inputs.keyboard.key_down.t || args.inputs.controller_one.key_down.y ||args.state.credits_labels.last.y > 800
       reset_state!
