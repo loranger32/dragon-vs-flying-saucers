@@ -128,6 +128,7 @@ class FinalLevel < Scene
     args.state.fireballs = []
     args.state.timer_at_start_level = args.state.timer
     args.state.player.alive = true
+    args.state.player_explosion_finished = false
     # Seems to be fixed
     #args.state.saucers = [] # Don't know why it is need here - saucers is nil anyway when this scene begins for the first time
   end

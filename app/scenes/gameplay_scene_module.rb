@@ -113,6 +113,7 @@ module GamePlayScene
     args.state.fireballs = nil
     args.state.bullets = nil
     args.state.saucers = nil
+    args.state.player_explosion_finished = false
     args.state.timer_at_start_level = args.state.timer
   end
 end
