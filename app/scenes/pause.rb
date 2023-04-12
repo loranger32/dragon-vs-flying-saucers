@@ -2,9 +2,10 @@ class Pause < Scene
   include Sky
   include GamePlayLabels
 
-  def initialize(args, current_scene_class)
+  def initialize(args, current_scene_class, current_background=nil)
     super(args)
     @current_scene_class = current_scene_class
+    @current_background = current_background
   end
 
   def tick
@@ -14,7 +15,7 @@ class Pause < Scene
     if final_boss?
       args.outputs.solids << night_sky
     else
-      gameplay_sky
+      args.outputs.primitives << @current_background
     end
 
     gameplay_labels

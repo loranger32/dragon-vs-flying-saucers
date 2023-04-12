@@ -6,9 +6,11 @@ class LevelFive < Scene
   BULLET_TICK_INTERVAL = 90
   SAUCERS_AT_START = 5
   MAX_SAUCER_COUNT = 8
+  BG_PATH = "sprites/backgrounds/rock.png"
 
   def tick
     args.state.bullets_aimed ||= true
+
     return if super == :player_dead
 
     proceed_bullets
@@ -22,7 +24,7 @@ class LevelFive < Scene
       args.state.bullets = []
       args.state.fireballs = []
 
-      args.state.scene = END_GAME_TRANSITION_SCENE.new(args)
+      args.state.scene = FINAL_BOSS_TRANSITION_SCENE.new(args)
 
     else
       replace_killed_saucers

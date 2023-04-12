@@ -1,11 +1,14 @@
-class EndGameTransition < Scene
+class FinalBossTransition < Scene
   include Sky
 
   AUTOPILOT_SPEED = 6
+  CLOUD_MAX_HEIGHT = 300
+  STAR_MIN_HEIGHT = 500
 
   def initialize(args)
     super
     @scene = 1
+    @bg_sprite = Background.new("sprites/backgrounds/rock.png")
   end
 
   def tick
@@ -14,9 +17,10 @@ class EndGameTransition < Scene
     debug_position
 
     if @scene == 1
+      args.outputs.primitives << @bg_sprite
       Cloud.move_clouds(args)
       gameplay_sky
-      args.outputs.sprites << [args.state.clouds, args.state.player]
+      args.outputs.primitives << [args.state.clouds, args.state.player]
       if first_seconds?(3)
         transition_label
         inc_timer!
@@ -29,9 +33,10 @@ class EndGameTransition < Scene
     end
 
     if @scene == 2
+      args.outputs.primitives << @bg_sprite
       gameplay_sky
       Cloud.move_clouds(args)
-      args.outputs.sprites << [args.state.clouds, args.state.player]
+      args.outputs.primitives << [args.state.clouds, args.state.player]
       if first_seconds?(5)
         inc_timer!
         return
@@ -39,21 +44,27 @@ class EndGameTransition < Scene
 
       move_player_up
       inc_timer!
-      @scene = 3 if player_out_of_screen?
+      if player_out_of_screen?
+        @scene = 3
+        args.state.clouds = nil
+      end
     end
 
     if @scene == 3
       set_player_at_bottom
       transition_sky
-      generate_new_clouds
-      Cloud.move_clouds(args)
+      generate_transition_clouds_and_stars
+      Cloud.move_clouds(args, CLOUD_MAX_HEIGHT)
+      Star.animate(args.state.stars)
       move_player_up
-      args.outputs.sprites << [args.state.clouds, args.state.player]
+      args.outputs.sprites << [args.state.clouds, args.state.stars, args.state.player]
 
       inc_timer!
       if player_out_of_screen?
         @scene = 4
         args.state.player_already_set_at_bottom = false
+        args.state.clouds = nil
+        args.state.stars = nil
       end
     end
 
@@ -75,6 +86,11 @@ class EndGameTransition < Scene
         args.state.scene = FINAL_BOSS_SCENE.new(args)
       end
     end
+  end
+
+  def generate_transition_clouds_and_stars
+    args.state.clouds ||= Cloud.init_clouds(args, 4, CLOUD_MAX_HEIGHT)
+    args.state.stars ||= Star.populate_sky(args, 20, STAR_MIN_HEIGHT)
   end
 
   def move_player_up

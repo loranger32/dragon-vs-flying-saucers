@@ -1,8 +1,12 @@
 class Title < Scene
   include Sky
 
+  BG_PATH = "sprites/backgrounds/background0.png"
+
   def tick
     gameplay_sky
+
+    args.outputs.primitives << bg_sprite
 
     labels = []
     labels << {
@@ -53,8 +57,8 @@ class Title < Scene
 
     args.state.player ||= Player.new(x: (args.grid.w / 2) - 100, y: (args.grid.h / 2) - 85, w: 200, h: 170)
     args.state.saucers ||= [Saucer.new(x: 150, y: 300, w: 100, h: 100), Saucer.new(x: 1050, y: 300, w: 100, h: 100)]
-    args.outputs.sprites << args.state.player
-    args.outputs.sprites << args.state.saucers
+    args.outputs.primitives << args.state.player
+    args.outputs.primitives << args.state.saucers
     args.state.player.animate_sprite(args)
     Saucer.animate(args.state.saucers)
 
@@ -71,5 +75,9 @@ class Title < Scene
     end
 
     debug_labels
+  end
+
+  def bg_sprite
+    @bg_sprite ||= Background.new(BG_PATH)
   end
 end

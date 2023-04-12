@@ -14,18 +14,18 @@ class Player < Sprite
     @y = y
     @w = w
     @h = h
+    @a = 255
     @alive = true
   end
 
   def animate_explosion(args)
     sprite_index = death_tick.frame_index(count: 5, hold_for: 8, repeat: false)
-    self.path = "sprites/dragon_explosion/dragon-explosion-#{sprite_index}.png"
-
     if sprite_index.nil?
-      args.state.timer = 0
+      #args.state.timer = 0
       args.state.player_explosion_finished = true
-      self.path = "sprites/dragon_explosion/dragon-explosion-11.png"
+      return
     end
+    self.path = "sprites/dragon_explosion/dragon-explosion-#{sprite_index}.png"
   end
 
   def animate_sprite(args)
