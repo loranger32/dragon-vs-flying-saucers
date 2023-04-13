@@ -80,6 +80,6 @@ class Fireball < Sprite
   end
 
   def out?
-    x > 1200 + w
+    x > 1280
   end
 end

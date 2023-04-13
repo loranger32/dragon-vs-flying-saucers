@@ -48,7 +48,7 @@ class Cloud < Sprite
 
   def self.spawn_random(max_height = 0)
     size = rand(RANDOM_SIZE) + MIN_SIZE
-    tw = 1200
+    tw = 1280
     th = 720 - max_height
     x = rand(tw - size*2) + (size / 2)
     y = rand(th - size*2) + (size / 2)
