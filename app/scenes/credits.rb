@@ -96,9 +96,9 @@ class Credits < Scene
     labels << h_centered_label(text: "final boss explosion: Cuzco", se: 5, y: spacer - 20, color: white)
     labels << h_centered_label(text: "https://opengameart.org/content/explosion", se: 1, y: spacer - 40, color: white)
 
-    sprites << {x: 120, y: spacer - 240, w: 240, h: 144, path: "sprites/backgrounds/background0.png"}
-    sprites << {x: 480, y: spacer.y, w: 240, h: 144, path: "sprites/backgrounds/snow.png"}
-    sprites << {x: 840, y: spacer.y, w: 240, h: 144, path: "sprites/backgrounds/rock.png"}
+    sprites << {x: 140, y: spacer - 240, w: 240, h: 144, path: "sprites/backgrounds/background0.png"}
+    sprites << {x: 520, y: spacer.y, w: 240, h: 144, path: "sprites/backgrounds/snow.png"}
+    sprites << {x: 900, y: spacer.y, w: 240, h: 144, path: "sprites/backgrounds/rock.png"}
     labels << h_centered_label(text: "backgrounds: greggman", se: 5, y: spacer - 20, color: WHITE)
     labels << h_centered_label(text: "https://opengameart.org/content/backgrounds-for-2d-platformers", se: 1, y: spacer - 40, color: WHITE)
 
