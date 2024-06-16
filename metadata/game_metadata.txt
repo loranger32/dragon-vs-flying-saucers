@@ -3,7 +3,7 @@ devid=loranger32
 devtitle=loranger32
 gameid=dragon-vs-flying-saucers
 gametitle=Dragon vs Flying Saucers
-version=0.3
+version=0.4
 icon=metadata/dragon-0.png
 
 # === Flags available at all licensing tiers ===
