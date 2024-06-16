@@ -37,7 +37,7 @@ class Title < Scene
     labels << {
       x: 40,
       y: 120,
-      text: "Keyboard : Arrows or WASD to move | 'Z', 'Q' or 'J' to fire | SPACE to pause | 'C' for credits"
+      text: "Keyboard : Arrows or WASD to move | Q' to fire | SPACE to pause | 'C' for credits"
     }
 
     labels << {
