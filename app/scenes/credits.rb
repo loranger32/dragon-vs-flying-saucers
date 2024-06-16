@@ -52,7 +52,7 @@ class Credits < Scene
     labels << h_centered_label(text: "loranger32", se: 5, y: spacer - 75, color: white)
     labels << h_centered_label(text: "https://loranger32.itch.io", se: 1, y: spacer - 40, color: white)
     labels << h_centered_label(text: "https://github.com/loranger32", se: 1, y: spacer - 40, color: white)
-    labels << h_centered_label(text: "Based on the 'Traget Practice' DragonRuby tutorial from Brett Chalupa", se: 1, y: spacer - 50, color: white)
+    labels << h_centered_label(text: "Based on the 'Target Practice' DragonRuby tutorial from Brett Chalupa", se: 1, y: spacer - 50, color: white)
     labels << h_centered_label(text: "https://book.dragonriders.community", se: 1, y: spacer - 40, color: white)
     labels << h_centered_label(text: "(thank you very much for this !)", se: 1, y: spacer - 40, color: white)
 
@@ -69,18 +69,18 @@ class Credits < Scene
     sprites << explosion
     sprites << {x: 900, y: spacer.y, w: 50, h: 50, path: "sprites/star.png"}
 
-    labels << h_centered_label(text: "dragon, flying saucers explosions and stars: DragonRuby Engine package", se: 5, y: spacer - 40, color: white)
+    labels << h_centered_label(text: "Dragon, flying saucers explosions and stars: DragonRuby Engine package", se: 5, y: spacer - 40, color: white)
 
     sprites << {x: 620, y: spacer - 140, w: 50, h: 50, path: "sprites/fireball.png"}
-    labels << h_centered_label(text: "fireball: Brett Chalupa", se: 5, y: spacer - 20, color: white)
+    labels << h_centered_label(text: "Fireball: Brett Chalupa", se: 5, y: spacer - 20, color: white)
     labels << h_centered_label(text: "https://book.dragonriders.community/03-spit-fire.html", se: 1, y: spacer - 40, color: white)
 
     sprites << { x: 600, y: spacer - 180, w: 100, h: 100, path: "sprites/cloud.png"}
-    labels << h_centered_label(text: "cloud: Ian Peter", se: 5, y: spacer - 20, color: white)
+    labels << h_centered_label(text: "Cloud: Ian Peter", se: 5, y: spacer - 20, color: white)
     labels << h_centered_label(text: "https://opengameart.org/users/ian-peter", se: 1, y: spacer - 40, color: white)
 
     sprites << {x: 600, y: spacer - 180, w: 100, h: 100, path: "sprites/flying_saucer/flying-saucer-0.png"}
-    labels << h_centered_label(text: "flying saucers: Gamedevtuts+", se: 5, y: spacer - 20, color: white)
+    labels << h_centered_label(text: "Flying saucers: Gamedevtuts+", se: 5, y: spacer - 20, color: white)
     labels << h_centered_label(text: "http://gamedev.tutsplus.com/articles/news/enjoy-these-totally-free-space-based-shoot-em-up-sprites", se: 1, y: spacer - 40, color: white)
 
     sprites << {x: 600, y: spacer - 180, w: 100, h: 100, path: "sprites/alienshiptex.png"}
@@ -89,36 +89,36 @@ class Credits < Scene
     labels << h_centered_label(text: "Creative Commons BY License: https://creativecommons.org/licenses/by/4.0/", se: 1, y: spacer - 40, color: white)
 
     sprites << {x: 600, y: spacer - 180, w: 100, h: 100, path: "sprites/dragon_explosion/dragon-explosion-4.png"}
-    labels << h_centered_label(text: "player explosion: jrob774", se: 5, y: spacer - 20, color: white)
+    labels << h_centered_label(text: "Player explosion: jrob774", se: 5, y: spacer - 20, color: white)
     labels << h_centered_label(text: "https://opengameart.org/users/jrob774", se: 1, y: spacer - 40, color: white)
 
     sprites << {x: 600, y: spacer - 180, w: 100, h: 100, path: "sprites/big_explosion/big_explosion-1.png"}
-    labels << h_centered_label(text: "final boss explosion: Cuzco", se: 5, y: spacer - 20, color: white)
+    labels << h_centered_label(text: "Final boss explosion: Cuzco", se: 5, y: spacer - 20, color: white)
     labels << h_centered_label(text: "https://opengameart.org/content/explosion", se: 1, y: spacer - 40, color: white)
 
     sprites << {x: 140, y: spacer - 240, w: 240, h: 144, path: "sprites/backgrounds/background0.png"}
     sprites << {x: 520, y: spacer.y, w: 240, h: 144, path: "sprites/backgrounds/snow.png"}
     sprites << {x: 900, y: spacer.y, w: 240, h: 144, path: "sprites/backgrounds/rock.png"}
-    labels << h_centered_label(text: "backgrounds: greggman", se: 5, y: spacer - 20, color: WHITE)
+    labels << h_centered_label(text: "Backgrounds: greggman", se: 5, y: spacer - 20, color: WHITE)
     labels << h_centered_label(text: "https://opengameart.org/content/backgrounds-for-2d-platformers", se: 1, y: spacer - 40, color: WHITE)
 
 
     ############################## SOUND AND MUSIC ############################
 
     labels << h_centered_label(text: "SOUNDS AND MUSICS", se: 10, y: spacer - 120, color: white)
-    labels << h_centered_label(text: "in-game music, fireball shoot and flying saucer explosion: Brett Chalupa", se: 5, y: spacer - 100, color: white)
+    labels << h_centered_label(text: "In-game music, fireball shoot and flying saucer explosion: Brett Chalupa", se: 5, y: spacer - 100, color: white)
     labels << h_centered_label(text: "https://book.dragonriders.community/08-sound.html", se: 1, y: spacer - 40, color: white)
 
-    labels << h_centered_label(text: "game-over sound: Sauer", se: 5, y: spacer - 75, color: white)
+    labels << h_centered_label(text: "Game-over sound: Sauer", se: 5, y: spacer - 75, color: white)
     labels << h_centered_label(text: "https://opengameart.org/content/oldschool-win-and-die-jump-and-run-sounds", se: 1, y: spacer - 40, color: white)
 
-    labels << h_centered_label(text: "final boss music: Orbital Colossus by Matthew Pablo", se: 5, y: spacer - 75, color: white)
+    labels << h_centered_label(text: "Final boss music: Orbital Colossus by Matthew Pablo", se: 5, y: spacer - 75, color: white)
     labels << h_centered_label(text: "https://matthewpablo.com", se: 1, y: spacer - 40, color: white)
 
-    labels << h_centered_label(text: "credits music: the-field-of-dreams by pauliuw", se: 5, y: spacer - 75, color: white)
+    labels << h_centered_label(text: "Credits music: the-field-of-dreams by pauliuw", se: 5, y: spacer - 75, color: white)
     labels << h_centered_label(text: "https://opengameart.org/content/the-field-of-dreams", se: 1, y: spacer - 40, color: white)
 
-    labels << h_centered_label(text: "end game music: Victory!", se: 5, y: spacer - 75, color: white)
+    labels << h_centered_label(text: "End game music: Victory!", se: 5, y: spacer - 75, color: white)
     labels << h_centered_label(text: "Composed, performed, mixed and mastered by Viktor Kraus", se: 1, y: spacer - 40, color: white)
     labels << h_centered_label(text: "https://opengameart.org/content/victory-1", se: 1, y: spacer - 40, color: white)
     labels << h_centered_label(text: "THANK YOU FOR PLAYING THIS GAME", se: 20, y: spacer - 200, color: white)
